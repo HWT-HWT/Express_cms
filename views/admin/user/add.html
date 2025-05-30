@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增加导航</title>
+</head>
+<body>
+    <form action="/admin/user/doadd" method="post" enctype="multipart/form-data">
+
+        标题：<input type="text" name='title' id="title"><br><br>
+
+        上传图片1: <input type="file" name="pic1" id="pic"><br><br>
+
+        上传图片2: <input type="file" name="pic2" id="pic"><br><br>
+
+        描述：<textarea name="desc" id="desc"></textarea><br><br>
+
+        <input type="submit" value="提交">
+
+    </form>
+</body>
+</html>
