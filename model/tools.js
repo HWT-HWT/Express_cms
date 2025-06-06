@@ -34,6 +34,10 @@ const tools = {
   },
   md5() {
 
+  },
+  getUnix(){
+    const time = new Date()
+    return time.getTime()
   }
 }
 

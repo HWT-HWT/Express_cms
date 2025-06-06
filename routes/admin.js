@@ -2,6 +2,7 @@ const express = require('express')
 const routes = express.Router()
 const url = require('url')
 
+
 routes.use((req,res,next)=>{
 
     var pathname = url.parse(req.url).pathname
@@ -14,12 +15,12 @@ routes.use((req,res,next)=>{
 
     }else{
 
-       if(pathname == '/login' || pathname == '/login/doLogin' || pathname == '/login/verify'){
-            next()
-       }else{
-        res.redirect('/admin/login')
-       }
-
+    //    if(pathname == '/login' || pathname == '/login/doLogin' || pathname == '/login/verify'){
+    //         next()
+    //    }else{
+    //     res.redirect('/admin/login')
+    //    }
+    next()
     }
     
 })
@@ -28,10 +29,12 @@ const user = require('./admin/user')
 const login = require('./admin/login')
 const nav = require('./admin/nav')
 const manager  = require('./admin/manager')
+const focus  = require('./admin/focus')
 const main  = require('./admin/main')
 
 
 routes.use('/',main)
+routes.use('/focus',focus)
 routes.use('/user',user)
 routes.use('/login',login)
 routes.use('/nav',nav)

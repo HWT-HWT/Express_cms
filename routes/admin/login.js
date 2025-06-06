@@ -66,4 +66,9 @@ routes.get('/verify', function (req, res) {
     res.status(200).send(captcha.data);
 });
 
+routes.get('/loginOut',function(req,res){
+    req.session.userinfo = '',
+    res.redirect('/admin/login')
+})
+
 module.exports  = routes
