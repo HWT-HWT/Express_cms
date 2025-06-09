@@ -13,12 +13,12 @@ const tools = {
 
         let day = sd.format(new Date(),'YYYYMMDD')
 
-        let dir =  path.join("/static/upload",day)
+        let dir =  path.join("static/upload",day)
               
-        await mkdirp(__dirname+dir)
+        await mkdirp(dir)
 
         //保存路径 上传前必须目录
-        cb(null, __dirname+dir)
+        cb(null,dir)
       },
       filename: function (req, file, cb) {
         // 获取后缀名
