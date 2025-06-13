@@ -34,14 +34,13 @@ routes.post('/doAdd', async (req,res)=>{
 
     try {
         await result.save()
-
         res.render('admin/public/success.html',{
-            'redirectUrl':'/admin/nav',
+            'redirectUrl':`/${req.app.locals.adminPath}/nav`,
             'message':'增加数据成功'
         })
     } catch (error) {
         res.render('admin/public/error.html',{
-            'redirectUrl':'/admin/nav',
+            'redirectUrl':`/${req.app.locals.adminPath}/nav`,
             'message':'增加数据失败'
         })
     }
@@ -65,12 +64,12 @@ routes.post('/doEdit', async (req,res)=>{
      try {
         var result =  await NavModel.updateOne({"_id":req.body.id},req.body)
         res.render('admin/public/success.html',{
-            'redirectUrl':'/admin/nav',
+            'redirectUrl':`/${req.app.locals.adminPath}/nav`,
             'message':'修改数据成功'
         })
      } catch (error) {
         res.render('admin/public/error.html?id='+req.body.id,{
-            'redirectUrl':'/admin/nav',
+            'redirectUrl':`/${req.app.locals.adminPath}/nav`,
             'message':'修改数据失败'
         })
      }
@@ -79,17 +78,15 @@ routes.post('/doEdit', async (req,res)=>{
 
 routes.get('/delete',async(req,res)=>{
 
-   
-    
     try {
         var result =  await NavModel.deleteOne({"_id":req.query.id})
         res.render('admin/public/success.html',{
-            'redirectUrl':'/admin/nav',
+            'redirectUrl':`/${req.app.locals.adminPath}/nav`,
             'message':'删除数据成功'
         })
     } catch (error) {
         res.render('admin/public/error.html?id='+req.body.id,{
-            'redirectUrl':'/admin/nav',
+            'redirectUrl':`/${req.app.locals.adminPath}/nav`,
             'message':'修改数据失败'
         })
     }

@@ -38,19 +38,20 @@
 
 
                     <td><%=list[i].link%></td>
-                    <td class="text-center"><%=list[i].sort%></span></td>
+                    <td class="text-center">
+                        <span class="chSpanNum" data-id="<%=list[i]._id%>" data-model="Focus" data-field="sort"> <%=list[i].sort%></span>
+                    </td>
                     <td align="center">
                         <%if(list[i].status==1){%>
-                        <img src="/admin/images/yes.gif" />
+                        <img src="/admin/images/yes.gif" class="chStatus" data-id="<%=list[i]._id%>" data-model="Focus" data-field="status" />
 
                         <%}else{%>
-                        <img src="/admin/images/no.gif" />
+                        <img src="/admin/images/no.gif" class="chStatus" data-id="<%=list[i]._id%>" data-model="Focus" data-field="status" />
                         <%}%>
-
                      </td>
 
-                     <td class="text-center"><a href="/admin/focus/edit?id=<%=list[i]._id%>">修改</a>　　
-                        <a class="delete" href="/admin/focus/delete?id=<%=list[i]._id%>">删除</a></td>
+                     <td class="text-center"><a href="/<%=adminPath%>/focus/edit?id=<%=list[i]._id%>">修改</a>　　
+                        <a class="delete" href="/<%=adminPath%>/focus/delete?id=<%=list[i]._id%>">删除</a></td>
                 </tr>
                 <%}%>
             </tbody>

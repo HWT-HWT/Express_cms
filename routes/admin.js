@@ -14,17 +14,17 @@ routes.use((req,res,next)=>{
         next()
 
     }else{
-
     //    if(pathname == '/login' || pathname == '/login/doLogin' || pathname == '/login/verify'){
     //         next()
     //    }else{
-    //     res.redirect('/admin/login')
+    //     res.redirect(`/${req.app.locals.adminPath}/login`)
     //    }
     next()
     }
     
 })
 
+const articleCate = require('./admin/articleCate')
 const user = require('./admin/user')
 const login = require('./admin/login')
 const nav = require('./admin/nav')
@@ -39,5 +39,6 @@ routes.use('/user',user)
 routes.use('/login',login)
 routes.use('/nav',nav)
 routes.use('/manager',manager)
+routes.use('/articleCate',articleCate)
 
 module.exports  = routes

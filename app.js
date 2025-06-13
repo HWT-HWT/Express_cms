@@ -2,6 +2,7 @@ const express = require('express')
 const ejs = require('ejs')
 const bodyParser = require('body-parser')
 const session = require('express-session')
+const config = require('./config/config')
 
 const app = express()
 const port = 3000
@@ -43,9 +44,11 @@ app.use(session({
 
 
 // 配置外部模块
-app.use('/admin',admin)
+app.use('/'+config.adminPath,admin)
 app.use('/api',api)
 app.use('/',index)
+
+app.locals.adminPath = config.adminPath
 
 
 app.listen(port, () => console.log(`127.0.0.1:${port}`))

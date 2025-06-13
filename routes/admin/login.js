@@ -22,7 +22,7 @@ routes.post('/dologin',async(req,res)=>{
     //用户输入验证码与session保存的验证码不一致的操作
     if (verify?.toLocaleLowerCase() != req.session.captcha?.toLocaleLowerCase()) {
         res.render('admin/public/error.html',{
-            'redirectUrl':'/admin/login',
+            'redirectUrl':`/${req.app.locals.adminPath}/login`,
             'message':'图像验证码输入错误'
         })
         return
@@ -37,14 +37,14 @@ routes.post('/dologin',async(req,res)=>{
         req.session.userinfo = result[0]
         //提示成功
         res.render('admin/public/success.html',{
-            'redirectUrl':'/admin',
+            'redirectUrl':`/${req.app.locals.adminPath}`,
             'message':'登录成功'
         })
         
     }else{
         //提示账户密码错误
         res.render('admin/public/error.html',{
-            'redirectUrl':'/admin/login',
+            'redirectUrl':`/${req.app.locals.adminPath}/login`,
             'message':'账户密码输入错误'
         })
     }
@@ -68,7 +68,7 @@ routes.get('/verify', function (req, res) {
 
 routes.get('/loginOut',function(req,res){
     req.session.userinfo = '',
-    res.redirect('/admin/login')
+    res.redirect(`/${req.app.locals.adminPath}/login`)
 })
 
 module.exports  = routes

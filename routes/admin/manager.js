@@ -30,7 +30,7 @@ routes.post('/doAdd', async(req,res)=>{
 
     if (username == '') {
         res.render('admin/public/error.html',{
-            'redirectUrl':'/admin/manager/add',
+            'redirectUrl':`/${req.app.locals.adminPath}/manager/add`,
             'message':'用户名不能为空'
         })
         return
@@ -38,7 +38,7 @@ routes.post('/doAdd', async(req,res)=>{
 
     if (password.length < 6 ) {
         res.render('admin/public/error.html',{
-            'redirectUrl':'/admin/manager/add',
+            'redirectUrl':`/${req.app.locals.adminPath}/manager/add`,
             'message':'密码不能小于六位'
         })
         return
@@ -46,7 +46,7 @@ routes.post('/doAdd', async(req,res)=>{
 
     if (password != rpassword ) {
         res.render('admin/public/error.html',{
-            'redirectUrl':'/admin/manager/add',
+            'redirectUrl':`/${req.app.locals.adminPath}/manager/add`,
             'message':'密码与确认密码不一致'
         })
         return
@@ -56,7 +56,7 @@ routes.post('/doAdd', async(req,res)=>{
 
     if (result.length > 0) {
         res.render('admin/public/error.html',{
-            'redirectUrl':'/admin/manager/add',
+            'redirectUrl':`/${req.app.locals.adminPath}/manager/add`,
             'message':'当前用户已经存在了'
         })
         return
@@ -72,7 +72,7 @@ routes.post('/doAdd', async(req,res)=>{
 
         await addResult.save()
 
-        res.redirect('/admin/manager')
+        res.redirect(`/${req.app.locals.adminPath}/manager`)
     }
 })
 
@@ -91,7 +91,7 @@ routes.get('/edit', async (req,res)=>{
             list:result[0]
         })
     }else{
-        res.redirect('/admin/manager')
+        res.redirect(`/${req.app.locals.adminPath}/manager`)
     }
     
 })
@@ -110,7 +110,7 @@ routes.post('/doEdit', async (req,res)=>{
         if(password.length<6){
             res.render('admin/public/error',{
                 message:'密码长度不能小于6',
-                redirectUrl:'/admin/manager/edit?id='+id
+                redirectUrl:`/${req.app.locals.adminPath}/manager/edit?id=`+id
             })
             return
         }
@@ -118,7 +118,7 @@ routes.post('/doEdit', async (req,res)=>{
         
         if (password != rpassword ) {
             res.render('admin/public/error.html',{
-                'redirectUrl':'/admin/manager/edit?id='+id,
+                'redirectUrl':`/${req.app.locals.adminPath}/manager/edit?id=`+id,
                 'message':'密码与确认密码不一致'
             })
             return
@@ -138,7 +138,7 @@ routes.post('/doEdit', async (req,res)=>{
             'status':status
         })
    }
-   res.redirect('/admin/manager')
+   res.redirect(`/${req.app.locals.adminPath}/manager`)
 })
 
 
@@ -150,7 +150,7 @@ routes.get('/delete', async (req,res)=>{
     
     res.render('admin/public/success.html',{
         message:'删除数据成功',
-        redirectUrl:'/admin/manager'
+        redirectUrl:`/${req.app.locals.adminPath}/manager`
     })
     
 })

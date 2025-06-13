@@ -26,7 +26,7 @@ routes.post('/doAdd', multer().single('focus_img'), async (req,res)=>{
 
     await result.save()
 
-    res.redirect('/admin/focus')
+    res.redirect(`/${req.app.locals.adminPath}/focus`)
     
 })
 
@@ -47,7 +47,7 @@ routes.get('/delete', async (req,res)=>{
     }
 
     res.render('admin/public/success.html',{
-        'redirectUrl':'/admin/focus',
+        'redirectUrl':`/${req.app.locals.adminPath}/focus`,
          'message':'删除成功'
     })
 })
@@ -59,6 +59,7 @@ routes.get('/edit', async (req,res)=>{
    res.render('admin/focus/edit.html',{
         list:result[0]
    })
+   
 })
 
 routes.post('/doEdit', multer().single('focus_img'),async (req,res)=>{
@@ -85,14 +86,14 @@ routes.post('/doEdit', multer().single('focus_img'),async (req,res)=>{
         }
 
         res.render('admin/public/success.html',{
-            'redirectUrl':'/admin/focus',
+            'redirectUrl':`/${req.app.locals.adminPath}/focus`,
             'message':'修改成功'
         })
 
     } catch (error) {
 
         res.render('admin/public/error.html?id='+req.body.id,{
-            'redirectUrl':'/admin/focus',
+            'redirectUrl':`/${req.app.locals.adminPath}/focus`,
             'message':'修改数据失败'
         })
 
