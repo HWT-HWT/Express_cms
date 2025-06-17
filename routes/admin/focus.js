@@ -19,7 +19,7 @@ routes.get('/add', async (req,res)=>{
 })
 
 routes.post('/doAdd', multer().single('focus_img'), async (req,res)=>{
-
+    
     var focus_img = req.file ? req.file.path.slice(7) : ''    
 
     var result = new FocusModel(Object.assign(req.body,{ 'focus_img' : focus_img}))

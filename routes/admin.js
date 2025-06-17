@@ -24,6 +24,7 @@ routes.use((req,res,next)=>{
     
 })
 
+const article = require('./admin/article')
 const articleCate = require('./admin/articleCate')
 const user = require('./admin/user')
 const login = require('./admin/login')
@@ -40,5 +41,6 @@ routes.use('/login',login)
 routes.use('/nav',nav)
 routes.use('/manager',manager)
 routes.use('/articleCate',articleCate)
+routes.use('/article',article)  
 
 module.exports  = routes

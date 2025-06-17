@@ -1,8 +1,10 @@
+
 $(function () {
 	app.init();
 });
 
 var app = {
+	adminPath:'admin',
 	init() {
 		this.toggleAside();
 		this.deleteConfirm();
@@ -32,13 +34,14 @@ var app = {
 		})
 	},
 	changeStatus: function () {
+		var adminPath =this.adminPath
 		$(".chStatus").click(function(){
 			var id = $(this).attr("data-id");
 			var model = $(this).attr("data-model");
 			var field = $(this).attr("data-field");
 			var el = $(this);
 			// 发起get请求 跳转url 携带参数 回到函数
-			$.get(`/admin/changeStatus`,{id:id,model:model,field:field},function(response){
+			$.get('/'+adminPath+'/changeStatus',{id:id,model:model,field:field},function(response){
 				if (response.success){
 					// 查找scr的传入的字符串是否有yes字段 indexOf没有找到返回-1
 					// 不等于-1则是找到  找到将src的更换成no图标
@@ -52,7 +55,8 @@ var app = {
 		})
 	},
 	changeNum:function(){
-		$(".chSpanNum").click(function(){			
+		var adminPath =this.adminPath
+		$(".chSpanNum").click(function(){
 			var id = $(this).attr('data-id')
 			var model = $(this).attr('data-model')
 			var field = $(this).attr('data-field')
@@ -74,7 +78,7 @@ var app = {
 					spanEl.html(0) 
 				}
 
-				$.get(`/admin/changeNum`,{id,model,field,inputNum},(response)=>{
+				$.get('/'+adminPath+'/changeNum',{id,model,field,inputNum},(response)=>{
 					console.log(response.success);
 				})
 			})

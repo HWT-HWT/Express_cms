@@ -2,12 +2,16 @@ const express = require('express')
 const FocusModel = require('../../model/focusModel')
 const ManagerModel = require('../../model/maagerModel')
 const NavModel = require('../../model/NavModel')
+const ArticleCateModel = require('../../model/articleCateModel')
+const ArticleModel = require('../../model/article')
 
 
 const appModel = {
     FocusModel,
     ManagerModel,
-    NavModel
+    NavModel,
+    ArticleCateModel,
+    ArticleModel
 }
 
 var routes = express.Router()
