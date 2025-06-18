@@ -118,7 +118,7 @@
     new FroalaEditor('#content', {
           height: 260,
           language: 'zh_cn',
-          imageUploadURL: '/<%=adminPath%>/article/doUploadImage',
+          imageUploadURL: '/<%=adminPath%>/article/doUploadImage?id=<%=articleCate[0]._id%>',
     });
 
     // new FroalaEditor('#content', {

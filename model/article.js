@@ -14,6 +14,7 @@ let ArticleSchema = mongoose.Schema({
     is_hot:{type:Number},
     is_best:{type:Number},
     is_new:{type:Number},
+    link:{type:String},
     sort:{
         type:Number,
         default:100
