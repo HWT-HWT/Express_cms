@@ -12,11 +12,37 @@ routes.get('/',async(req,res)=>{
 
   var pageSize = 2;
 
-  var result = await articleModel.find({}).skip((page-1)*pageSize).limit(pageSize)
+  // var result = await articleModel.find({}).skip((page-1)*pageSize).limit(pageSize)
 
+  var json={}
+
+  var result = await articleModel.aggregate([
+    {
+      $lookup:{
+        from:'article_cate',
+        localField:'cid',
+        foreignField:'_id',
+        as:'cate'
+      }
+    },
+    { 
+      $match:json
+    },
+    {
+      $sort:{'add_time':-1}
+    },
+    {
+      $skip:(page-1)*pageSize
+    },
+    {
+      $limit:pageSize
+    }
+  ])
+  
+  console.log(result);
+  
   var count = await articleModel.find({})
   
-
    res.render('admin/article/index.html',{
      list:result,
      totaPages:Math.ceil(count.length/pageSize),
