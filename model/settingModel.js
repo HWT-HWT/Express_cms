@@ -7,10 +7,10 @@ let settingSchema = mongoose.Schema({
     no_picture:{type:String},
     site_icp:{type:String},
     site_tel:{type:String},
-    serch_keywords:{type:String},
+    search_keywords:{type:String},
     code:{type:String},
-    site_desciption:{type:String},
-    tongjs_code:{type:String},
+    site_description:{type:String},
+    tongji_code:{type:String},
 })
 
 module.exports = mongoose.model('Setting',settingSchema,'setting')
