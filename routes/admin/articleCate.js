@@ -1,6 +1,7 @@
 const express = require('express')
 const {getUnix} = require('../../model/tools')
 const ArticleCateModel = require('../../model/articleCateModel')
+const ArticleModel = require('../../model/article')
 const  mongoose = require('../../model/core')
 
 var routes = express.Router()
@@ -38,6 +39,8 @@ routes.get('/add',async(req,res)=>{
 
  routes.post('/doAdd',async(req,res)=>{
    try {
+    console.log(req.body);
+    
     if(req.body.pid != 0) {
       req.body.pid = new mongoose.Types.ObjectId(req.body.pid)
      }
@@ -88,22 +91,36 @@ routes.post('/doEdit',async(req,res)=>{
 
 routes.get('/delete',async(req,res)=>{
   try {
-    var result = await ArticleCateModel.find({'pid':new mongoose.Types.ObjectId(req.query.id)})
 
-    console.log(!result.length>0);
-    
+    var result = await ArticleCateModel.find({'pid':new mongoose.Types.ObjectId(req.query.id)})
     
     if (!result.length>0) {
-      await ArticleCateModel.deleteOne({'_id':req.query.id})
+      
+      var Article = await ArticleModel.find({'cid':new mongoose.Types.ObjectId(req.query.id)})
 
-      res.render('admin/public/success.html',{
-        'redirectUrl':`/${req.app.locals.adminPath}/articleCate`,
-          'message':'删除成功 '
-      })
+      console.log(Article,'查找子类');
+      
+
+      if (Article.length>0) {
+        res.render('admin/public/error.html',{
+          'redirectUrl':`/${req.app.locals.adminPath}/articleCate`,
+            'message':'当前分类下面有文章信息无法删除'
+        })
+      }else{
+        await ArticleCateModel.deleteOne({'_id':req.query.id})
+
+        res.render('admin/public/success.html',{
+          'redirectUrl':`/${req.app.locals.adminPath}/articleCate`,
+            'message':'删除成功 '
+        })
+      }
+
+      
+
     }else{
       res.render('admin/public/error.html',{
         'redirectUrl':`/${req.app.locals.adminPath}/articleCate`,
-          'message':'先删除子类 '
+          'message':'该分类下有次级分类无法删除'
       })
     }
   } catch (error) {

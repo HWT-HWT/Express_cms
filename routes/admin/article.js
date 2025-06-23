@@ -41,11 +41,11 @@ routes.get('/',async(req,res)=>{
   
   console.log(result);
   
-  var count = await articleModel.find({})
+  var count = await articleModel.countDocuments()
   
    res.render('admin/article/index.html',{
      list:result,
-     totaPages:Math.ceil(count.length/pageSize),
+     totaPages:Math.ceil(count/pageSize),
      page:page
   })
 })
