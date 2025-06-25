@@ -5,7 +5,7 @@ const NavModel = require('../../model/NavModel')
 const ArticleCateModel = require('../../model/articleCateModel')
 const ArticleModel = require('../../model/article')
 
-
+// 保存数据库
 const appModel = {
     FocusModel,
     ManagerModel,
@@ -57,21 +57,22 @@ routes.get('/changeStatus', async (req,res)=>{
             })
         }
 })
-
+// 修改状态
 routes.get('/changeNum', async (req,res)=>{
     try {
-
+        // 获取url传参
         var id = req.query.id
         var model = req.query.model+'Model'
         var field = req.query.field
         var inputNum = req.query.inputNum
 
+        // 查找对应的数据库
         var result = await appModel[model].find({"_id":id})
-
+        // 查找成功的操作
         if (result.length > 0) {
-
+            // 修改当前数据库的状态 修改成传过来的图片
             await appModel[model].updateOne({'_id':id},{[field]:inputNum});
-            
+            // 提示
             res.send({
                 success:true,
                 message:'修改成功'

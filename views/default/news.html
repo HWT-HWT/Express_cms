@@ -27,7 +27,7 @@
 										<li>
 											<div class="newslist">
 												<a href="/"><%=newslist[i].title%> </a>
-												<span><%=newslist[i].add_time%></span>
+												<span><%=formatTime(newslist[i].add_time) %></span>
 												<p>
 												   [<a href="/autochina2022/index.php?s=/lists_21.html"><%=newslist[i].cate[0].title%></a>]
 												   <%=newslist[i].description%>

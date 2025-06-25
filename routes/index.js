@@ -4,11 +4,12 @@ const NavModel = require('../model/NavModel')
 const articleModel = require('../model/article')
 const articleCateModel = require('../model/articleCateModel')
 const mongoose = require('../model/core')
+const {formatTime} =require('../model/tools')
 const url = require('url')
 var routes = express.Router()
 
 routes.use(async (req, res, next) => {
-
+    
     var pathname = url.parse(req.url).pathname
 
     var NavResult = await NavModel.find({ position: 2 }).sort({ 'sort': 1 })
@@ -16,6 +17,10 @@ routes.use(async (req, res, next) => {
     req.app.locals.navList = NavResult
 
     req.app.locals.pathname = pathname
+
+    // 添加全局方法 时间戳转换时间
+    req.app.locals.formatTime = formatTime;
+
 
     next()
 })
@@ -42,9 +47,7 @@ routes.get('/news', async (req, res) => {
 
     var json = {}
 
-    var cateResult = await articleCateModel.find({'pid': new mongoose.Types.ObjectId('6858ed4d5d16d3e63437aa9e') })
-
-    console.log(cateResult);
+    var cateResult = await articleCateModel.find({'pid': new mongoose.Types.ObjectId('685a5a87e506f04b8f81d8f8') })
 
     var tempArr = [];
     
@@ -55,9 +58,6 @@ routes.get('/news', async (req, res) => {
     json = Object.assign(json, {
         'cid': { $in: tempArr }
     })
-    console.log(tempArr);
-    
-    console.log(json);
 
     var result = await articleModel.aggregate([
         {
@@ -72,7 +72,7 @@ routes.get('/news', async (req, res) => {
             $match: json
         },
         {
-            $sort: { 'add_time': -1 }
+            $sort: {'sort': -1 }
         },
         {
             $skip: (page - 1) * pageSize
@@ -83,8 +83,6 @@ routes.get('/news', async (req, res) => {
     ])
 
     var count = await articleModel.countDocuments(json)
-
-    console.log(count,result);
 
     res.render('default/news.html', {
         newslist: result,

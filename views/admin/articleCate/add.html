@@ -16,7 +16,9 @@
                         <select name="pid" id="pid">
                             <option value="0">顶级分类</option>
                             <%for(var i=0;i<cateList.length;i++){%>
-                            <option value="<%=cateList[i]._id%>"><%=cateList[i].title%></option>
+                                <%if (cateList[i].pid == 0) {%>
+                                    <option value="<%=cateList[i]._id%>"><%=cateList[i].title%></option>
+                                <%}%>
                             <%}%>
                         </select>
                     </li>  

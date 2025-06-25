@@ -11,7 +11,7 @@ let ArticleCateSchema = mongoose.Schema({
     description:{type:String}, //seo优化
     status:{type:String,default:1},   
     sort:{type:Number,default:100},
-    add_title:{type:Number}
+    add_time:{type:Number}
 })
 
 module.exports = mongoose.model('ArticleCate',ArticleCateSchema,'article_cate')
