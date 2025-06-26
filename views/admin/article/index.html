@@ -10,6 +10,7 @@
             <tr class="th">
                 <th>名称</th>
                 <th>分类</th>
+                <th>链接</th>
                 <th>图片</th>             
                 <th class="text-center">排序</th>
                 <th class="text-center">状态</th>
@@ -20,6 +21,9 @@
                     <td><%=list[i].title%></td>
                     <td>
                         <%=list[i].cate[0].title  %>
+                    </td>
+                    <td>
+                        <%=list[i].link  %>
                     </td>
                     <td>
                         <%if(list[i].article_img){%>

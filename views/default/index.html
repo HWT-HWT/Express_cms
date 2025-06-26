@@ -98,134 +98,47 @@
 						<div class="list">
 							<dl id="dl1">
 								<dt>展会新闻</dt>
-								<dd>
-									<a href="autochina2022/index.php?s=articles_158.html">01<span>/</span>关于2022北京车展采取交通管制的通告</a>
-								</dd>
-								<dd>
-									<a href="autochina2022/index.php?s=articles_153.html">02<span>/</span>2022北京车展防疫指南</a>
-								</dd>
-								<dd>
-									<a href="autochina2022/index.php?s=articles_140.html">03<span>/</span>2022北京车展展位分布图重磅来袭！</a>
-								</dd>
-								<dd>
-									<a href="autochina2022/index.php?s=articles_128.html">04<span>/</span>2022北京国际汽车展览会参观票售票公告
-									</a>
-								</dd>
 
+								<%for(var i=0;i<topResult.length;i++){%>
+									<dd>
+										<a href="content_<%=topResult[i]._id%>.html">01<span>/</span><%=topResult[i].title%></a>
+									</dd>
+								<%}%>
+								
 							</dl>
 
 						</div>
 					</div>
 					<div class="body">
 						<ul class="list">
-							<li>
-								<a href="autochina2022/index.php?s=articles_157.html">
-									<div class="view">
-										<div class="date">
-											<big>24</big><span>2022-09</span>
+							<%for(var i=0;i<StatusResult.length;i++){%>
+								<li>
+									<a href="autochina2022/index.php?s=articles_157.html">
+										<div class="view">
+											<div class="date">
+												<big>24</big><span><%=formatTime(StatusResult[i].add_time)%></span>
+											</div>
+											<div class="img">
+												<table>
+													<tbody>
+														<tr>
+															<td><img src="/default/images/2-15121G50KA95.png">
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<h4><%=StatusResult[i].title%></h4>
 										</div>
-										<div class="img">
-											<table>
-												<tbody>
-													<tr>
-														<td><img src="/default/images/2-15121G50KA95.png">
-														</td>
-													</tr>
-												</tbody>
-											</table>
+										<div class="mask" style="background: #0068b7 none repeat scroll 0 0;">
+	
+											<h2><%=StatusResult[i].description%></h2>
+											<hr>
+											<p><%=StatusResult[i].keywords%></p>
 										</div>
-										<h4>2022（第十六届）北京国际汽车展览会即将盛大开幕</h4>
-									</div>
-									<div class="mask" style="background: #0068b7 none repeat scroll 0 0;">
-
-										<h2>2022（第十六届）北京国际汽车展览会即将盛大开幕</h2>
-										<hr>
-										<p>2022（第十六届）北京国际汽车展览会（AUTO CHINA 2022）（简称“2022北京车展”）将于2022年9月26日-10月5日在北京中国国际展览...</p>
-									</div>
-								</a>
-							</li>
-
-							<li>
-								<a href="autochina2022/index.php?s=articles_153.html">
-									<div class="view">
-										<div class="date">
-											<big>22</big><span>2022-09</span>
-										</div>
-										<div class="img">
-											<table>
-												<tbody>
-													<tr>
-														<td><img src="/default/images/95.png">
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<h4>2022北京车展防疫指南</h4>
-									</div>
-									<div class="mask" style="background: #9f0216 none repeat scroll 0 0;">
-
-										<h2>2022北京车展防疫指南</h2>
-										<hr>
-										<p>本届展会为了给展商和观众创造良好和健康的参观环境，主办方高度重视展会现场的疫情防控工作，并对疫情防控工作进行了周密部署，采取了严格的措施，请观众和展商配合....</p>
-									</div>
-								</a>
-							</li>
-
-							<li>
-								<a href="autochina2022/index.php?s=/articles_140.html">
-									<div class="view">
-										<div class="date">
-											<big>19</big><span>2022-09</span>
-										</div>
-										<div class="img">
-											<table>
-												<tbody>
-													<tr>
-														<td><img src="/default/images/2-15121G50KA95.png">
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<h4>2022北京车展展位分布图重磅来袭！</h4>
-									</div>
-									<div class="mask" style="background: # none repeat scroll 0 0;">
-
-										<h2>2022北京车展展位分布图重磅来袭！</h2>
-										<hr>
-										<p>2022（第十六届）北京国际汽车展览会（AUTO CHINA 2022）将于2022年9月28日-10月5日在中国国际展览中心（天竺）新馆....
-										</p>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="autochina2022/index.php?s=/articles_128.html">
-									<div class="view">
-										<div class="date">
-											<big>17</big><span>2022-09</span>
-										</div>
-										<div class="img">
-											<table>
-												<tbody>
-													<tr>
-														<td><img src="/default/images/2-15121G52000W3.png">
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<h4>2022北京国际汽车展览会参观票 售票公告</h4>
-									</div>
-									<div class="mask" style="background: #f46f14 none repeat scroll 0 0;">
-
-										<h2>2022北京国际汽车展览会参观票 售票公告</h2>
-										<hr>
-										<p>感谢并欢迎社会各界人士参观2022（第十六届）北京国际汽车展览会！现将观众购买本届车展参观票事宜公告如下：...</p>
-									</div>
-								</a>
-							</li>
-
+									</a>
+								</li>
+							<%}%>
 						</ul>
 					</div>
 				</div>

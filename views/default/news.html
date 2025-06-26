@@ -26,11 +26,12 @@
 									<div class="to-animate">
 										<li>
 											<div class="newslist">
-												<a href="/"><%=newslist[i].title%> </a>
+												<a href="/content_<%=newslist[i]._id%>.html"><%=newslist[i].title%> </a>
 												<span><%=formatTime(newslist[i].add_time) %></span>
 												<p>
-												   [<a href="/autochina2022/index.php?s=/lists_21.html"><%=newslist[i].cate[0].title%></a>]
+												   [<a href="/news?id=<%=newslist[i].cate[0].pid%>"><%=newslist[i].cate[0].title%></a>]
 												   <%=newslist[i].description%>
+												   
 												</p>
 											</div>
 										</li>

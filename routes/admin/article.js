@@ -18,7 +18,7 @@ routes.get('/', async (req, res) => {
   // 获取路由传参 ##用于切换分页
   var page = req.query.page || 1
   // 设置一页显示多少行
-  var pageSize = 2;
+  var pageSize = 5;
 
   // var result = await articleModel.find({}).skip((page-1)*pageSize).limit(pageSize)
 
@@ -46,11 +46,11 @@ routes.get('/', async (req, res) => {
     },
     {
       // 设置升序还是倒叙
-      $sort: { 'sort': -1 }
+      $sort: { 'sort': 1 }
     },
     {
       // 跳过指定数量
-      $skip: (page - 1) * pageSize
+      $skip: (page-1) * pageSize
     },
     {
       // 限制返回数量
@@ -59,8 +59,8 @@ routes.get('/', async (req, res) => {
   ])
 
   // 获取表中有多少数据
-  var count = await articleModel.countDocuments()
-
+  var count = await articleModel.countDocuments(json)
+  
   // 跳转携带参数
   res.render('admin/article/index', {
     list: result, // 当前页数据列表

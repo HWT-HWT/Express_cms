@@ -21,9 +21,9 @@
 						<div class="to-animate">
 							<div class="fh5co-press-text">
 								<h3 class="h3 fh5co-press-title"><i class="id">1</i>资料下载</h3>
-								<a href="uploads/autochina2022-1.zip" class="list-group-item active"><span class="badge">新</span>2022北京车展招展函下载</a>
-								<a href="uploads/autochina2022-2.zip" class="list-group-item active"><span class="badge">新</span>2022北京车展国内企业参展申请表</a>
-
+								<%for(var i=0;i<list1.length;i++){%>
+								<a href="<%=list1[i].link%>" class="list-group-item active"><span class="badge">新</span><%=list1[i].title%></a>
+								<%}%>
 							</div>
 						</div>
 					</div>
@@ -31,9 +31,9 @@
 						<div class="to-animate">
 							<div class="fh5co-press-text">
 								<h3 class="h3 fh5co-press-title"><i class="id">2</i>票务信息</h3>
-								<a href="index.php?s=/articles_128.html" class="list-group-item"><span class="badge"></span>2022北京车展售票公告</a>
-								<a href="index.php?s=/articles_154.html" class="list-group-item"><span class="badge"></span>2022北京车展购票全知道</a>
-								<a href="http://service.ciec.com.cn/ciec_sw/modules/register/preRegm/91950/web/zh/n" class="list-group-item"><span class="badge"></span>零部件和新能源汽车展区 观众注册</a>
+								<%for(var i=0;i<list2.length;i++){%>
+									<a href="<%=list2[i].link%>" class="list-group-item"><span class="badge"></span><%=list2[i].title%></a>
+								<%}%>
 							</div>
 
 						</div>
@@ -49,10 +49,9 @@
 						<div class="to-animate">
 							<div class="fh5co-press-text">
 								<h3 class="h3 fh5co-press-title"><i class="id">3</i>交通信息</h3>
-								<a href="index.php?s=articles_136.html" class="list-group-item active">公交</a>
-								<a href="index.php?s=articles_132.html" class="list-group-item"><span class="badge"></span>天竺新馆交通信息</a>
-								<a href="index.php?s=articles_131.html" class="list-group-item"><span class="badge"></span>静安庄馆交通信息</a>
-								<a href="index.php?s=articles_159.html" class="list-group-item">交通管制</a>
+								<%for(var i=0;i<list3.length;i++){%>
+									<a href="<%=list3[i].link%>" class="list-group-item <%if(i===0){%>active<%}%>"><span class="badge active"></span><%=list3[i].title%></a>
+								<%}%>
 							</div>
 						</div>
 					</div>
@@ -61,13 +60,9 @@
 						<div class="to-animate">
 							<div class="fh5co-press-text">
 								<h3 class="h3 fh5co-press-title"><i class="id">4</i>平面图</h3>
-								<a href="index.php?s=/articles_140.html" class="list-group-item "><span class="badge"></span>2022北京车展展位分布图</a>
-								<a href="../uploads/28125949292.pdf" class="list-group-item "><span class="badge">静安庄</span>老国展展厅平面图</a>
-								<a href="../uploads/18365391.pdf" class="list-group-item "><span class="badge">天竺</span>新国展展厅平面图</a>
-								<a href="../uploads/281303834.pdf" class="list-group-item "><span class="badge">静安庄</span>老国展展馆平面图
-									<a>
-										<a href="../uploads/183734808.pdf" class="list-group-item "><span class="badge">天竺</span>新国展展馆平面图</a>
-
+								<%for(var i=0;i<list4.length;i++){%>
+									<a href="<%=list4[i].link%>" class="list-group-item"><span class="badge"></span><%=list4[i].title%></a>
+								<%}%>
 							</div>
 						</div>
 					</div>
@@ -82,7 +77,10 @@
 						<div class="to-animate">
 							<div class="fh5co-press-text">
 								<h3 class="h3 fh5co-press-title"><i class="id">5</i>同期活动</h3>
-								<a href="index.php?s=/articles_152.html" class="list-group-item active">2022北京车展媒体日发布时间表</a>
+								<%for(var i=0;i<list5.length;i++){%>
+									<a href="<%=list5[i].link%>" class="list-group-item active"><%=list5[i].title%></a>
+								<%}%>
+								
 							</div>
 						</div>
 					</div>
@@ -90,9 +88,9 @@
 						<div class="to-animate">
 							<div class="fh5co-press-text">
 								<h3 class="h3 fh5co-press-title"><i class="id">6</i>周边服务</h3>
-								<a href="index.php?s=articles_133.html" class="list-group-item">旅游景点</a>
-								<a href="index.php?s=articles_130.html" class="list-group-item">酒店住宿</a>
-								<a href="index.php?s=articles_135.html" class="list-group-item">医疗机构</a>
+								<%for(var i=0;i<list6.length;i++){%>
+									<a href="<%=list6[i].link%>" class="list-group-item"><%=list6[i].title%></a>
+								<%}%>
 							</div>
 
 						</div>

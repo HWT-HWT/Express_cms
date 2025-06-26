@@ -1310,3 +1310,14 @@ blockquote {
 .navbar-right{
 	padding-right: 40px;
 }
+
+
+.title{
+  padding: 20px 0;
+  text-align: center;
+}
+
+.content{
+  padding: 5rpx;
+  line-height: 2;
+}
