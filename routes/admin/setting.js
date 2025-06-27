@@ -34,7 +34,10 @@ routes.post('/doEdit', multer().fields([{ name: 'site_logo', maxCount: 1 }, { na
     // 修改setting数据库中全部的值
     await setting.updateMany({}, Object.assign(json, req.body))
     // 跳转
-    res.redirect(`/${req.app.locals.adminPath}/setting`)
+    res.render('admin/public/success.html',{
+        'redirectUrl':`/${req.app.locals.adminPath}/setting`,
+        'message':'修改成功'
+    })
 })
 
 

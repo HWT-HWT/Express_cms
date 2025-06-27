@@ -25,6 +25,13 @@ routes.get('/', async (req, res) => {
   // 筛选条件 用于筛选
   var json = {}
 
+  // 筛选框
+  var keywords = req.query.keywords
+
+  if(keywords){
+    json = Object.assign(json,{'title':{$regex:new RegExp(keywords)}})
+  }
+
   var result = await articleModel.aggregate([
     // 聚合管道 关联两个表
     {
@@ -65,7 +72,8 @@ routes.get('/', async (req, res) => {
   res.render('admin/article/index', {
     list: result, // 当前页数据列表
     totaPages: Math.ceil(count / pageSize),
-    page: page //全部页数
+    page: page, //全部页数,
+    keywords:keywords
   })
 })
 
@@ -143,7 +151,7 @@ routes.get('/edit', async (req, res) => {
   // 跳转 传参
   res.render('admin/article/edit.html', {
     articleCate: cateResult,
-    list: articleResult[0]
+    list: articleResult[0],
   })
 })
 

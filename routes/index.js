@@ -3,8 +3,9 @@ const FocusModel = require('../model/focusModel')
 const NavModel = require('../model/NavModel')
 const articleModel = require('../model/article')
 const articleCateModel = require('../model/articleCateModel')
+const settingModel = require('../model/settingModel')
 const mongoose = require('../model/core')
-const {formatTime} =require('../model/tools')
+const {formatTime,FormatYeas,FormatMonth,FormatDay} =require('../model/tools')
 const url = require('url')
 var routes = express.Router()
 
@@ -21,6 +22,18 @@ routes.use(async (req, res, next) => {
     // 添加全局方法 时间戳转换时间
     req.app.locals.formatTime = formatTime;
 
+    req.app.locals.FormatYeas = FormatYeas;
+    
+    req.app.locals.FormatMonth = FormatMonth;
+
+    req.app.locals.FormatDay = FormatDay;
+
+    req.app.locals.title='2020北京车展'
+    
+    req.app.locals.keywords='2020北京车展'
+
+    req.app.locals.description='2022(第十六届)北京国际汽车展览会(auto china 2022 BeiJinCar)'
+
 
     next()
 })
@@ -32,18 +45,26 @@ routes.get('/', async (req, res) => {
 
     var  StatusResult = await articleModel.find({'status':1}).limit(4).sort({'sort':-1})
 
-    console.log(StatusResult);
+    var settingSeo  = await settingModel.find({})
+
+    console.log(settingSeo);
     
     res.render('default/index.html', {
         focusList: focusResult,
         topResult,
-        StatusResult
+        StatusResult,
+        title:settingSeo[0].site_title,
+        keywords:settingSeo[0].site_keywords,
+        description:settingSeo[0].site_description
     })
 })
 
 routes.get('/overview', (req, res) => {
     res.render('default/overview.html', {
-        focusList: []
+        focusList: [],
+        title:'2020北京车展-展览概况',
+        keywords:'2020北京车展-展览概况',
+        description:'2022(第十六届)北京国际汽车展览概况'
     })
 })
 
@@ -62,8 +83,6 @@ routes.get('/news', async (req, res) => {
     }else{
         var cateResult = await articleCateModel.find({})
     }
-
-  
 
     var tempArr = [];
     
@@ -99,6 +118,8 @@ routes.get('/news', async (req, res) => {
     ])
 
     var count = await articleModel.countDocuments(json)
+    
+    console.log(result);
     
 
     res.render('default/news.html', {
@@ -155,9 +176,13 @@ routes.get('/content_:id.html', async(req, res) => {
     var id = req.params.id
 
     var result = await articleModel.find({'_id':id})
-
+    console.log(result);
+    
     res.render('default/new_content.html', {
-        list: result[0]
+        list: result[0],
+        title:result[0].title,
+        keywords:result[0].keywords,
+        description:result[0].description
     })
 })
 

@@ -46,6 +46,21 @@ const tools = {
     // 获取时间戳
     let day = sd.format(unixStr,'YYYY-MM-DD')
     return day
+  },
+  FormatYeas(unixStr){
+    // 获取时间戳
+    let Yeas = sd.format(unixStr,'YYYY')
+    return Yeas
+  },
+  FormatMonth(unixStr){
+    // 获取时间戳
+    let Month = sd.format(unixStr,'MM')
+    return Month
+  },
+  FormatDay(unixStr){
+    // 获取时间戳
+    let Day = sd.format(unixStr,'DD')
+    return Day
   }
 }
 
